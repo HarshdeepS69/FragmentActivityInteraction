@@ -1,6 +1,7 @@
 package com.harsh.fragmentactivityinteraction.Fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +23,7 @@ class FirstFragment : Fragment(),ActivityInterface {
     var btnDecrement : Button ?= null
     var txtName : TextView ?= null
     var mainFrag : LinearLayout ?= null
-
+    private val TAG = "FirstFragment"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,7 @@ class FirstFragment : Fragment(),ActivityInterface {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.fragment_first, container, false)
     }
 
@@ -43,12 +45,6 @@ class FirstFragment : Fragment(),ActivityInterface {
         btnIncrement = view.findViewById(R.id.btnIncrement)
         btnDecrement = view.findViewById(R.id.btnDecrement)
         mainFrag = view.findViewById(R.id.mainFrag)
-
-
-
-
-
-
 
         btnIncrement?.setOnClickListener(){
             mainActivity.incNumber()
@@ -64,13 +60,15 @@ class FirstFragment : Fragment(),ActivityInterface {
 
     override fun getValue(text : String) {
         txtName?.setText(text)
-        mainFrag?.setBackgroundColor(ContextCompat.getColor(mainActivity,R.color.Red))
+        //mainFrag?.setBackgroundColor(ContextCompat.getColor(mainActivity,R.color.Red))
 
     }
 
-    override fun changeColor() {
-        
+    override fun changeColor(colorName: Int) {
+        Log.e(TAG, "on color change $colorName")
+        mainFrag?.setBackgroundColor(ContextCompat.getColor(mainActivity, colorName))
     }
+
 
 
 }

@@ -35,7 +35,13 @@ class MainActivity : AppCompatActivity() {
 
 
         red?.setOnClickListener(){
-
+            activityInterface.changeColor(R.color.Red)
+        }
+        green?.setOnClickListener(){
+            activityInterface.changeColor(R.color.Green)
+        }
+        blue?.setOnClickListener(){
+            activityInterface.changeColor(R.color.Blue)
         }
 
         btnSubmit?.setOnClickListener(){
